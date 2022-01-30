@@ -50,7 +50,7 @@ const AppNavigation = () => {
                     options={{
                         tabBarIcon: ({ focused }) => (
                             <View style={styles.item}>
-                                <Ionicons name='cart-outline' size={20} color='black' />
+                                <Ionicons name='list-outline' size={20} color='black' />
                                 <Text>Órdenes</Text>
                             </View>
                         )

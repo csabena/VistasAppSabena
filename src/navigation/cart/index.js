@@ -25,10 +25,6 @@ const CartStackNavigation = () => {
                 name="Cart"
                 component={Cart}
                 options={{ title: 'Carrito' }} />
-            <Stack.Screen
-                name="Orders"
-                component={Orders}
-                options={{ title: 'Órdenes' }} />
         </Stack.Navigator>
     )
 }
