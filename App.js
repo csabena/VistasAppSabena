@@ -9,9 +9,8 @@
 import AppNavigation from './src/navigation/index';
 import { Provider } from 'react-redux';
 import React from 'react';
-import {
-  StyleSheet,
-} from 'react-native';
+import { StyleSheet } from 'react-native';
+
 import store from './src/store/index';
 
 const App = () => {

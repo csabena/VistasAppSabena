@@ -10,14 +10,22 @@ import React from "react";
 import { selectCategory } from '../../store/actions/category.action';
 import styles from './styles';
 
-const Categories = ({navigation}) => {
-    const dispatch = useDispatch();
-    const categories = useSelector(state => state.categories.categories);
+//import { CATEGORIES } from '../../utils/data/categories';
 
+
+
+
+
+
+const Categories = ({navigation}) => {
+  const categories = useSelector(state => state.categories.categories);
+  const dispatch = useDispatch();
+    
     const handleSelectedCategory = (item) => {
-    dispatch(selectCategory(item.id));
+      dispatch(selectCategory(item.id));
      navigation.navigate('Products', 
        {
+            //categoryId: item.id,
             name: item.title,
             color: item.color,
        }
@@ -33,7 +41,7 @@ const Categories = ({navigation}) => {
         <SafeAreaView style={styles.container}>
           <View style={styles.container}>
             <FlatList
-               date={ categories }
+               data={categories}
                renderItem={renderCategories}
                keyExtractor={item => item.id}
              />
