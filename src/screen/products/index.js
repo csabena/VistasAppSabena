@@ -7,7 +7,6 @@ import React, { useEffect } from 'react';
 import { filterBreads, selectBread } from '../../store/actions/breads.action';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { BREADS } from '../../utils/data/breads';
 import ProductItem from '../../components/product-item/index';
 import styles from './styles';
 
