@@ -1,28 +1,32 @@
 import {
   Text,
+  TouchableOpacity,
   View
 } from 'react-native';
 
-import { COLORS } from '../../utils/constant/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import React from 'react';
 import styles from './styles';
 
-const OrderItem = ({item}) => {
+//import { COLORS } from '../../utils/constant/colors';
+
+
+const OrderItem = ({item, onDelete}) => {
   const formatDate = (time) => {
     const date = new Date(time);
     return date.toLocaleDateString();
   }
   return (
-    <View style={styles.item} >
+    <View style={styles.item}>
         <View>
           <Text style={styles.header}>{formatDate(item.date)}</Text>  
         </View> 
         <View style={styles.detail}>
-          <View>
             <Text>Transacción: {item.id}</Text>
             <Text>$ {item.total}</Text>
-          </View>
+            <TouchableOpacity onPress={() => onDelete(item.id)}>
+              <Ionicons name="trash-outline" size={20} />
+            </TouchableOpacity>
         </View>
     </View>
   );

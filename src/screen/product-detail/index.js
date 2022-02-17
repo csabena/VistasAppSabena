@@ -13,9 +13,8 @@ import styles from './styles';
 const ProductDetail = ({ navigation, route }) => {
     const dispatch = useDispatch();
     const bread = useSelector(state => state.breads.selected);
-    //const { product } = route.params
 
-    const handleAddItemCart = (item) => dispatch(addItem(bread));
+    const handleAddItemCart = () => dispatch(addItem(bread));
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.container}>

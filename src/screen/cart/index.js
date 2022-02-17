@@ -4,24 +4,26 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { confirmCart, removeItem } from '../../store/actions/cart.action';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { CART } from "../../utils/data/cart";
 import CartItem from '../../components/cart-item';
+import {NavigationContainer} from '@react-navigation/native';
 import React from "react";
-import { removeItem } from '../../store/actions/cart.action';
 import styles from './styles';
 
-const Cart = () => {
-  //const items = CART;  // nuevo se va
-  //const total = items.reduce((acc, item) => acc + item.price * item.quantity, 0); // nuevo se va
+//import { CART } from "../../utils/data/cart";
+
+const Cart = ({navigation}) => {
   const dispatch = useDispatch();
   const items = useSelector(state=> state.cart.items);
   const total = useSelector(state=> state.cart.total);
   
 
   const handleConfirm = () => {
-    console.warn('Confirmar compra');
+    dispatch(confirmCart(items, total));
+    navigation.navigate('Orders');
+    //console.warn('Confirmar compra');
   };
 
   const handleDelete = (id) => {
@@ -39,12 +41,11 @@ const Cart = () => {
         <FlatList
           data={items}
           renderItem={renderItems}
-          keyExtractor={(item) => item.id.toString()}
-          numColumns={1}
+          keyExtractor={(item) => item.id}
         />  
       </View>
       <View style={styles.footer}>
-        <TouchableOpacity style={styles.confirm} onPress={handleConfirm}>
+        <TouchableOpacity style={styles.confirm} onPress={handleConfirm()}>
           <Text>Confirmar</Text>
           <View style={styles.total}>
             <Text style={styles.text}>Total:</Text>
@@ -57,4 +58,4 @@ const Cart = () => {
   );
 };
     
-export default connect() (Cart);
+export default Cart;
