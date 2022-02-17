@@ -10,11 +10,11 @@ import styles from './styles';
 
 const CartItem = ({item, onDelete}) => {
   return (
-    <View style={styles.container}>
-        <View style={styles.header}>
-            <Text style={styles.name}>{item.name}</Text>
+    <View style={styles.item}>
+        <View>
+            <Text style={styles.header}>{item.name}</Text>
         </View>
-        <View style={styles.details}>
+        <View style={styles.detail}>
           <Text>Cantidad: {item.quantity}</Text>
           <Text>$ {item.price}</Text>
           <TouchableOpacity onPress={() => onDelete(item.id)}>

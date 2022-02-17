@@ -1,5 +1,5 @@
-import { COLORS } from "../../utils/constant/colors";
-import Orders from "../../screen/orders";
+import { COLORS } from "../../utils/constants/colors";
+import Orders from "../../screens/orders";
 import { Platform } from "react-native";
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
