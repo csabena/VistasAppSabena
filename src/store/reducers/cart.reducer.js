@@ -1,6 +1,4 @@
-import { CONFIRM_CART, REMOVE_ITEM } from "../actions/cart.action";
-
-import { CART } from "../../utils/data/cart";
+import { CART } from '../../utils/data/cart';
 
 const initialState = {
     items: [],
@@ -13,33 +11,31 @@ const sumTotal = (items) => items
 
 const CartReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'ADD_ITEM': 
+        case 'ADD_ITEM':
             let updateCart = [];
             if(state.items.find(item => item.id === action.item.id)) {
                 updateCart = state.items.map(item => {
-                    if (item.id === action.item.id) item.quantity++;
-                    return item;
+                    if(item.id === action.item.id) item.quantity++;
+                    return item; 
                 });
             } else {
                 const item = { ...action.item, quantity: 1 };
-                updateCart = [ ...state.items, item];
-            };
-
+                updateCart = [...state.items, item];
+            }
             return {
                 ...state,
                 items: updateCart,
                 total: sumTotal(updateCart)
-            };
-        case REMOVE_ITEM:
+            }
+        case 'REMOVE_ITEM':
             const filterCart = state.items.filter(item => item.id !== action.itemId);
             return {
                 ...state,
                 items: filterCart,
-                total: sumTotal(filterCart),
-            };
-        default:
+                total: sumTotal(filterCart)
+            }
+        default: 
             return state;
-
     }
 }
 

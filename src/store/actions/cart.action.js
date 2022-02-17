@@ -1,6 +1,4 @@
-//import { PanResponder } from "react-native";
-
-import { URL_API } from "../../utils/data/database";
+import { URL_API } from '../../utils/data/database'
 
 export const ADD_ITEM = 'ADD_ITEM';
 export const REMOVE_ITEM = 'REMOVE_ITEM';
@@ -10,16 +8,11 @@ export const addItem = item => ({
     type: ADD_ITEM,
     item
 })
+
 export const removeItem = itemId => ({
     type: REMOVE_ITEM,
     itemId
 })
-/*
-export const confirmCart = () => ({
-    type: CONFIRM_CART,
-    payload
-})
-*/
 
 export const confirmCart = (payload, total) => {
     return async dispatch => {
@@ -27,7 +20,7 @@ export const confirmCart = (payload, total) => {
             const response = await fetch(`${URL_API}/orders.json`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     date: Date.now(),
@@ -37,13 +30,12 @@ export const confirmCart = (payload, total) => {
             });
             const result = await response.json();
             console.warn(result);
-
             dispatch({
                 type: CONFIRM_CART,
                 confirm: true,
-            });
+            })
         } catch (error) {
             console.warn(error.message);
         }
     }
-} 
+}
